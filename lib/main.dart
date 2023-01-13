@@ -1,10 +1,10 @@
+import 'package:cardiovascular_predictor_ui/src/presentation/splashscreen.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'src/presentation/homescreen.dart';
+import 'package:cardiovascular_predictor_ui/injection.dart'
+    as di;
 
-Future main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+void main() {
+  di.init();
   runApp(const MyApp());
 }
 
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
           // This is the theme of your application.
           primarySwatch: Colors.blue,
           fontFamily: 'Mulish'),
-      home: const HomeScreen(),
+      home: const SplashScreen(),
     );
   }
 }
