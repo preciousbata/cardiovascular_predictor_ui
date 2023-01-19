@@ -29,6 +29,14 @@ class _HomeScreenState extends State<HomeScreen> {
   final _formKey = GlobalKey<FormState>();
   final cardioBloc = sl.get<CardioBloc>();
 
+  String? inputValidator(
+      String? input, String errorMessage) {
+    if (input == null || input.isEmpty) {
+      return errorMessage;
+    }
+    return null;
+  }
+
   @override
   void initState() {
     _classifier = Classifier();
@@ -70,25 +78,6 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Widget buildResultScreen(CardioLoadedState state) {
-    return Container(
-      width: double.infinity,
-      color: Colors.white,
-      child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image(
-              image: AssetImage(state.image),
-              width: 300,
-            ),
-            Text(
-              state.message,
-              style: const TextStyle(fontSize: 20),
-            )
-          ]),
-    );
-  }
-
   Widget userForm() {
     return Form(
       key: _formKey,
@@ -97,12 +86,8 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           TextFormField(
             controller: heightController,
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return "Please enter a value";
-              }
-              return null;
-            },
+            validator: (value) =>
+                inputValidator(value, 'Enter valid value'),
             decoration: const InputDecoration(
                 hintText: 'Height (cm)',
                 filled: true,
@@ -115,12 +100,8 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           TextFormField(
             controller: weightController,
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return "Please enter a value";
-              }
-              return null;
-            },
+            validator: (value) =>
+                inputValidator(value, 'Enter valid value'),
             decoration: const InputDecoration(
                 hintText: 'Weight (kg)',
                 filled: true,
@@ -133,12 +114,8 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           TextFormField(
             controller: systolicController,
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return "Please enter a value";
-              }
-              return null;
-            },
+            validator: (value) =>
+                inputValidator(value, 'Enter valid value'),
             decoration: const InputDecoration(
                 hintText: 'Systolic Pressure (mmHg)',
                 filled: true,
@@ -151,12 +128,8 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           TextFormField(
             controller: ageController,
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return "Please enter a value";
-              }
-              return null;
-            },
+            validator: (value) =>
+                inputValidator(value, 'Enter valid value'),
             decoration: const InputDecoration(
                 hintText: 'Age',
                 filled: true,
@@ -169,12 +142,8 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           TextFormField(
             controller: diastolicController,
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return "Please enter a value";
-              }
-              return null;
-            },
+            validator: (value) =>
+                inputValidator(value, 'Enter valid value'),
             decoration: const InputDecoration(
                 hintText: 'Diastolic Pressure (mmHg)',
                 filled: true,
@@ -195,7 +164,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 final age = num.parse(ageController.text);
                 final diaPressure =
                     num.parse(diastolicController.text);
-                cardioBloc.add(Check(
+                cardioBloc.add(CheckCardioVascolarEvent(
                     age: age,
                     diaPressure: diaPressure,
                     height: height,

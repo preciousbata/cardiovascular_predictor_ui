@@ -9,7 +9,8 @@ class CardioBloc extends Bloc<CardioEvent, CardioState> {
   final classifier = Classifier();
 
   CardioBloc() : super(CardioInitialState()) {
-    on<Check>((event, emit) {
+    on<CheckCardioVascolarEvent>((event, emit) {
+      emit(CardioLoadingState());
       try {
         final prediction = classifier.predict([
           event.height,
@@ -18,7 +19,6 @@ class CardioBloc extends Bloc<CardioEvent, CardioState> {
           event.age,
           event.diaPressure
         ]);
-        emit(CardioLoadingState());
         if (prediction[0] < 0.5) {
           emit(const CardioLoadedState(
               message: 'Your heart is healthy',
