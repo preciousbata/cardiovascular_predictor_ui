@@ -9,7 +9,7 @@ class CardioBloc extends Bloc<CardioEvent, CardioState> {
   final classifier = Classifier();
 
   CardioBloc() : super(CardioInitialState()) {
-    on<CheckCardioVascolarEvent>((event, emit) {
+    on<CheckCardioVascularEvent>((event, emit) {
       emit(CardioLoadingState());
       try {
         final prediction = classifier.predict([

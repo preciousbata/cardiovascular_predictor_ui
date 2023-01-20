@@ -164,7 +164,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 final age = num.parse(ageController.text);
                 final diaPressure =
                     num.parse(diastolicController.text);
-                cardioBloc.add(CheckCardioVascolarEvent(
+                cardioBloc.add(CheckCardioVascularEvent(
                     age: age,
                     diaPressure: diaPressure,
                     height: height,
