@@ -21,12 +21,11 @@ class CardioBloc extends Bloc<CardioEvent, CardioState> {
         ]);
         if (prediction[0] < 0.5) {
           emit(const CardioLoadedState(
-              message: 'Your heart is healthy',
-              image: 'assets/correct.png'));
+              message: 'Your heart is healthy', image: 'assets/correct.png'));
         } else {
           emit(const CardioLoadedState(
               image: 'assets/error.png',
-              message: 'Your heart is at risk'));
+              message: 'You need to take \ncare of your heart'));
         }
       } on Exception catch (e) {
         emit(ErrorState('$e'));

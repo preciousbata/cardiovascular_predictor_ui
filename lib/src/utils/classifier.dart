@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:tflite_flutter/tflite_flutter.dart';
 
 class Classifier {
@@ -15,18 +14,16 @@ class Classifier {
 
   Future<void> _loadModel() async {
     try {
-      _interpreter =
-          await Interpreter.fromAsset(_modelFile);
-      debugPrint('Interpreter Created Successfully');
+      _interpreter = await Interpreter.fromAsset(_modelFile);
+      // debugPrint('Interpreter Created Successfully');
     } catch (e) {
-      debugPrint(
-          'Unable to create interpreter, Caught Exception: ${e.toString()}');
+      // debugPrint(
+      //     'Unable to create interpreter, Caught Exception: ${e.toString()}');
     }
   }
 
   List<double> predict(List<num> values) {
-    var input = [values.map((e) => e.toDouble()).toList()]
-        .reshape([1, 5]);
+    var input = [values.map((e) => e.toDouble()).toList()].reshape([1, 5]);
     var output = List<double>.filled(1, 0).reshape([1, 1]);
     // runs inference
     _interpreter.run(input, output);

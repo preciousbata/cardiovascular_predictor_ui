@@ -1,7 +1,7 @@
+import 'package:cardiovascular_predictor_ui/injection.dart' as di;
+import 'package:cardiovascular_predictor_ui/routes.dart';
 import 'package:cardiovascular_predictor_ui/src/presentation/splashscreen.dart';
 import 'package:flutter/material.dart';
-import 'package:cardiovascular_predictor_ui/injection.dart'
-    as di;
 
 void main() {
   di.init();
@@ -20,8 +20,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
           // This is the theme of your application.
           primarySwatch: Colors.blue,
+          useMaterial3: true,
           fontFamily: 'Mulish'),
-      home: const SplashScreen(),
+      initialRoute: SplashScreen.routeName,
+      routes: routes,
     );
   }
 }
