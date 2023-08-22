@@ -1,14 +1,12 @@
+import 'package:cardiovascular_predictor_ui/injection.dart';
 import 'package:cardiovascular_predictor_ui/src/presentation/bloc/cardio_bloc.dart';
 import 'package:cardiovascular_predictor_ui/src/presentation/result_screen.dart';
-import 'package:cardiovascular_predictor_ui/src/utils/classifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
-import '../../../injection.dart';
-
 class HomeScreen extends StatefulWidget {
-  static const routeName = '/';
+  static const routeName = '/homescreen';
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
@@ -21,7 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final TextEditingController ageController = TextEditingController();
   final TextEditingController systolicController = TextEditingController();
   final TextEditingController diastolicController = TextEditingController();
-  late Classifier _classifier;
+  // late Classifier _classifier;
   final _formKey = GlobalKey<FormState>();
   final cardioBloc = sl.get<CardioBloc>();
 
@@ -34,7 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   void initState() {
-    _classifier = Classifier();
+    cardioBloc;
     super.initState();
   }
 
@@ -95,6 +93,7 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           TextFormField(
             controller: heightController,
+            keyboardType: TextInputType.number,
             validator: (value) => inputValidator(value, 'Enter valid value'),
             decoration: const InputDecoration(
                 hintText: 'Height (cm)',
@@ -108,6 +107,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           TextFormField(
             controller: weightController,
+            keyboardType: TextInputType.number,
             validator: (value) => inputValidator(value, 'Enter valid value'),
             decoration: const InputDecoration(
                 hintText: 'Weight (kg)',
@@ -121,6 +121,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           TextFormField(
             controller: systolicController,
+            keyboardType: TextInputType.number,
             validator: (value) => inputValidator(value, 'Enter valid value'),
             decoration: const InputDecoration(
                 hintText: 'Systolic Pressure (mmHg)',
@@ -134,6 +135,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           TextFormField(
             controller: ageController,
+            keyboardType: TextInputType.number,
             validator: (value) => inputValidator(value, 'Enter valid value'),
             decoration: const InputDecoration(
                 hintText: 'Age',
@@ -147,6 +149,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           TextFormField(
             controller: diastolicController,
+            keyboardType: TextInputType.number,
             validator: (value) => inputValidator(value, 'Enter valid value'),
             decoration: const InputDecoration(
                 hintText: 'Diastolic Pressure (mmHg)',
@@ -155,7 +158,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 enabledBorder: OutlineInputBorder(),
                 focusedBorder: OutlineInputBorder()),
           ),
-          const SizedBox(height: 25),
+          const SizedBox(height: 163),
           GestureDetector(
             onTap: () {
               if (_formKey.currentState!.validate()) {
@@ -164,7 +167,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 final sysPressure = num.parse(systolicController.text);
                 final age = num.parse(ageController.text);
                 final diaPressure = num.parse(diastolicController.text);
-                cardioBloc.add(CheckCardioVascularEvent(
+                cardioBloc.add(PredictEvent(
                     age: age,
                     diaPressure: diaPressure,
                     height: height,

@@ -1,15 +1,15 @@
 import 'package:bloc/bloc.dart';
-import 'package:cardiovascular_predictor_ui/src/utils/classifier.dart';
+import 'package:cardiovascular_predictor_ui/src/domain/classifier.dart';
 import 'package:equatable/equatable.dart';
 
 part 'cardio_event.dart';
 part 'cardio_state.dart';
 
 class CardioBloc extends Bloc<CardioEvent, CardioState> {
-  final classifier = Classifier();
+  final Classifier classifier;
 
-  CardioBloc() : super(CardioInitialState()) {
-    on<CheckCardioVascularEvent>((event, emit) {
+  CardioBloc(this.classifier) : super(CardioInitialState()) {
+    on<PredictEvent>((event, emit) {
       emit(CardioLoadingState());
       try {
         final prediction = classifier.predict([

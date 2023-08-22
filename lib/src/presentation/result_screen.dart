@@ -56,7 +56,8 @@ class ResultScreen extends StatelessWidget {
                       MaterialPageRoute(
                           builder: (context) => const HomeScreen())),
                   icon: const Icon(
-                    Icons.arrow_back,
+                    Icons.close,
+                    color: Colors.red,
                     size: 30,
                   ))
             ],

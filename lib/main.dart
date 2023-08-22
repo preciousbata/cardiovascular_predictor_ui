@@ -1,10 +1,11 @@
 import 'package:cardiovascular_predictor_ui/injection.dart' as di;
+import 'package:cardiovascular_predictor_ui/injection.dart';
 import 'package:cardiovascular_predictor_ui/routes.dart';
 import 'package:cardiovascular_predictor_ui/src/presentation/splashscreen.dart';
 import 'package:flutter/material.dart';
 
-void main() {
-  di.init();
+void main() async {
+  await di.init();
   runApp(const MyApp());
 }
 
@@ -22,7 +23,17 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
           useMaterial3: true,
           fontFamily: 'Mulish'),
-      initialRoute: SplashScreen.routeName,
+      home: FutureBuilder(
+        future: sl.allReady(),
+        // a future that checks if getIt has initialised all its future variables
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          if (snapshot.hasData) {
+            return const SplashScreen();
+          } else {
+            return const CircularProgressIndicator();
+          }
+        },
+      ),
       routes: routes,
     );
   }
