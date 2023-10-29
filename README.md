@@ -5,11 +5,11 @@ This project is the implementation of on-device machine learning using *tflite_f
 # (Important) Initial setup
 **Linux and Mac users**
 
-Copy the install.sh file in the root folder of your app, and execute the command, sh install.sh in the root folder, text_classification_app/ in our case.
+Copy the install.sh file in the root folder of your app, and execute the command, sh install.sh in the root folder
 
 **Windows users**
 
-Copy the install.bat file in the root folder of your app, and execute the command, install.bat in the root folder, text_classification_app/ in our case.
+Copy the install.bat file in the root folder of your app, and execute the command, install.bat in the root folder.
 
 This will automatically download the latest binaries from release assets and place them in appropriate folders for you.
 
@@ -22,7 +22,7 @@ The following packages are used in this project:
 
 ### get_it
 
-**Package description:** The `get_it` package is a simple service locator for Dart and Flutter projects. It allows for the easy management of dependency injection and provides a way to locate and retrieve instances of registered services or objects.
+**Package Description:** The `get_it` package is a simple service locator for Dart and Flutter projects. It allows for the easy management of dependency injection and provides a way to locate and retrieve instances of registered services or objects.
 
 **Usage:**
 
@@ -79,78 +79,4 @@ No additional configuration steps are required for the packages mentioned above.
 
 ## Usage
 
-1. Import the necessary packages in your Dart files:
-
-   ```dart
-   import 'package:get_it/get_it.dart';
-   import 'package:flutter_bloc/flutter_bloc.dart';
-   import 'package:tflite/tflite.dart';
-   ```
-
-2. Utilize the `get_it` package to register and retrieve services or objects:
-
-   ```dart
-   // Register a service
-   GetIt locator = GetIt.instance;
-   locator.registerSingleton<MyService>(MyService());
-
-   // Retrieve a service
-   MyService service = locator<MyService>();
-   ```
-
-3. Use the `flutter_bloc` package to implement the BLoC pattern:
-
-   ```dart
-   // Define a state class
-   class MyState extends Equatable {
-     final String data;
-
-     MyState(this.data);
-
-     @override
-     List<Object> get props => [data];
-   }
-
-   // Define an event class
-   abstract class MyEvent extends Equatable {
-     const MyEvent();
-
-     @override
-     List<Object> get props => [];
-   }
-
-   // Define a BLoC class
-   class MyBloc extends Bloc<MyEvent, MyState> {
-     MyBloc() : super(MyState('Initial Data'));
-
-     @override
-     Stream<MyState> mapEventToState(MyEvent event) async* {
-       // Handle events and yield new states
-       if (event is DataUpdatedEvent) {
-         yield MyState(event.data);
-       }
-     }
-   }
-
-   // Usage example
-   void main() {
-     MyBloc myBloc = MyBloc();
-     myBloc.add(DataUpdatedEvent('New Data'));
-   }
-   ```
-
-4. Utilize the `tflite` package to run TensorFlow Lite models:
-
-   ```dart
-   // Load a TensorFlow Lite model
-   await Tflite.loadModel(
-     model: 'assets/model.tflite',
-     labels: 'assets/labels.txt',
-   );
-
-   // Run inference using the loaded model
-   List<dynamic> output = await Tflite.runModelOnImage(
-     path: 'path/to/image.jpg',
-   );
-
-   //
+**See Demo**
