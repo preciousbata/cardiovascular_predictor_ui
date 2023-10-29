@@ -14,7 +14,9 @@ Copy the install.bat file in the root folder of your app, and execute the comman
 This will automatically download the latest binaries from release assets and place them in appropriate folders for you.
 
 # Demo
-![cardio_app_demo](https://user-images.githubusercontent.com/42701343/212425392-db40f736-5a59-4eac-9939-adc852af0941.gif)
+
+https://github.com/preciousbata/cardiovascular_predictor_ui/assets/42701343/aee4dbeb-b509-405c-a59a-47273178b9b0
+
 
 ## Packages
 
