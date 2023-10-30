@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:cardiovascular_predictor_ui/src/domain/classifier.dart';
+import 'package:cardiovascular_predictor_ui/src/domain/repositories/classifier.dart';
 import 'package:equatable/equatable.dart';
 
 part 'cardio_event.dart';
@@ -19,6 +19,7 @@ class CardioBloc extends Bloc<CardioEvent, CardioState> {
           event.age,
           event.diaPressure
         ]);
+
         if (prediction[0] < 0.5) {
           emit(const CardioLoadedState(
               message: 'Your heart is healthy', image: 'assets/correct.png'));

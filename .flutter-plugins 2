@@ -1,0 +1,13 @@
+# This is a generated file; do not edit or check into version control.
+cloud_firestore=/Users/preciousbatta/.pub-cache/hosted/pub.dev/cloud_firestore-4.9.0/
+cloud_firestore_web=/Users/preciousbatta/.pub-cache/hosted/pub.dev/cloud_firestore_web-3.7.0/
+firebase_core=/Users/preciousbatta/.pub-cache/hosted/pub.dev/firebase_core-2.15.1/
+firebase_core_web=/Users/preciousbatta/.pub-cache/hosted/pub.dev/firebase_core_web-2.7.0/
+tflite_flutter=/Users/preciousbatta/.pub-cache/hosted/pub.dev/tflite_flutter-0.9.5/
+url_launcher=/Users/preciousbatta/.pub-cache/hosted/pub.dev/url_launcher-6.1.11/
+url_launcher_android=/Users/preciousbatta/.pub-cache/hosted/pub.dev/url_launcher_android-6.0.38/
+url_launcher_ios=/Users/preciousbatta/.pub-cache/hosted/pub.dev/url_launcher_ios-6.1.4/
+url_launcher_linux=/Users/preciousbatta/.pub-cache/hosted/pub.dev/url_launcher_linux-3.0.5/
+url_launcher_macos=/Users/preciousbatta/.pub-cache/hosted/pub.dev/url_launcher_macos-3.0.6/
+url_launcher_web=/Users/preciousbatta/.pub-cache/hosted/pub.dev/url_launcher_web-2.0.18/
+url_launcher_windows=/Users/preciousbatta/.pub-cache/hosted/pub.dev/url_launcher_windows-3.0.7/

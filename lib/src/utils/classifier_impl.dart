@@ -1,5 +1,5 @@
 import 'package:cardiovascular_predictor_ui/injection.dart';
-import 'package:cardiovascular_predictor_ui/src/domain/classifier.dart';
+import 'package:cardiovascular_predictor_ui/src/domain/repositories/classifier.dart';
 import 'package:logger/logger.dart';
 import 'package:tflite_flutter/tflite_flutter.dart';
 

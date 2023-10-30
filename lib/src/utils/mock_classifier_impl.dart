@@ -1,4 +1,4 @@
-import 'package:cardiovascular_predictor_ui/src/domain/classifier.dart';
+import 'package:cardiovascular_predictor_ui/src/domain/repositories/classifier.dart';
 
 class MockClassifier implements Classifier {
   final String modelFile;

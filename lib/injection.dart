@@ -1,4 +1,4 @@
-import 'package:cardiovascular_predictor_ui/src/domain/classifier.dart';
+import 'package:cardiovascular_predictor_ui/src/domain/repositories/classifier.dart';
 import 'package:cardiovascular_predictor_ui/src/presentation/bloc/cardio_bloc.dart';
 import 'package:cardiovascular_predictor_ui/src/utils/classifier_impl.dart';
 import 'package:cardiovascular_predictor_ui/src/utils/constants.dart';
@@ -11,9 +11,10 @@ final sl = GetIt.instance;
 Future<void> init() async {
   //bloc
   sl.registerFactory(() => CardioBloc(sl.get()));
+
   //core
   sl.registerFactory(() => Interpreter);
-  sl.registerFactory<Classifier>(() => ClassifierImpl(clf_model));
+  sl.registerFactory<Classifier>(() => ClassifierImpl(clfModel));
 
   //logger
   sl.registerLazySingleton<Logger>(() => Logger());

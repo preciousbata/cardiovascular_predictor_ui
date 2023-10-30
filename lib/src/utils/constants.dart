@@ -1,1 +1,1 @@
-const String clf_model = 'clf_model.tflite';
+const String clfModel = 'clf_model.tflite';

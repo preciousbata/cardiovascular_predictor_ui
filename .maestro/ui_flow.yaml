@@ -1,0 +1,13 @@
+appId: com.example.cardiovascular_predictor_ui
+---
+- launchApp
+- tapOn: "Height (cm)"
+- inputText: 189
+- tapOn: "Weight (kg)"
+- inputText: 78
+- tapOn: "Systolic Pressure (mmHg)"
+- inputText: 160
+- tapOn: "Age"
+- inputText: 34
+- tapOn: "Diastolic Pressure (mmHg)"
+- inputText: 189

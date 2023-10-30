@@ -27,7 +27,14 @@ class _HomeScreenState extends State<HomeScreen> {
     if (input == null || input.isEmpty) {
       return errorMessage;
     }
-    return null;
+
+    try {
+      double.parse(input); // Try parsing the input as a number
+    } catch (e) {
+      return "Input is not a valid number";
+    }
+
+    return null; // Input is a valid number
   }
 
   @override
@@ -61,7 +68,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 style: TextStyle(fontSize: 32, fontWeight: FontWeight.w600),
               ),
               SizedBox(
-                height: screenHeight / 32,
+                height: screenHeight / 90,
               ),
               Container(
                 margin: const EdgeInsets.only(top: 20, left: 10, right: 10),
@@ -94,7 +101,7 @@ class _HomeScreenState extends State<HomeScreen> {
           TextFormField(
             controller: heightController,
             keyboardType: TextInputType.number,
-            validator: (value) => inputValidator(value, 'Enter valid value'),
+            validator: (value) => inputValidator(value, 'Cannot be empty'),
             decoration: const InputDecoration(
                 hintText: 'Height (cm)',
                 filled: true,
@@ -108,7 +115,7 @@ class _HomeScreenState extends State<HomeScreen> {
           TextFormField(
             controller: weightController,
             keyboardType: TextInputType.number,
-            validator: (value) => inputValidator(value, 'Enter valid value'),
+            validator: (value) => inputValidator(value, 'Cannot be empty'),
             decoration: const InputDecoration(
                 hintText: 'Weight (kg)',
                 filled: true,
@@ -122,7 +129,7 @@ class _HomeScreenState extends State<HomeScreen> {
           TextFormField(
             controller: systolicController,
             keyboardType: TextInputType.number,
-            validator: (value) => inputValidator(value, 'Enter valid value'),
+            validator: (value) => inputValidator(value, 'Cannot be empty'),
             decoration: const InputDecoration(
                 hintText: 'Systolic Pressure (mmHg)',
                 filled: true,
@@ -136,7 +143,7 @@ class _HomeScreenState extends State<HomeScreen> {
           TextFormField(
             controller: ageController,
             keyboardType: TextInputType.number,
-            validator: (value) => inputValidator(value, 'Enter valid value'),
+            validator: (value) => inputValidator(value, 'Cannot be empty'),
             decoration: const InputDecoration(
                 hintText: 'Age',
                 filled: true,
@@ -150,7 +157,7 @@ class _HomeScreenState extends State<HomeScreen> {
           TextFormField(
             controller: diastolicController,
             keyboardType: TextInputType.number,
-            validator: (value) => inputValidator(value, 'Enter valid value'),
+            validator: (value) => inputValidator(value, 'Cannot be empty'),
             decoration: const InputDecoration(
                 hintText: 'Diastolic Pressure (mmHg)',
                 filled: true,
@@ -158,7 +165,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 enabledBorder: OutlineInputBorder(),
                 focusedBorder: OutlineInputBorder()),
           ),
-          const SizedBox(height: 163),
+          const SizedBox(height: 123),
           GestureDetector(
             onTap: () {
               if (_formKey.currentState!.validate()) {
